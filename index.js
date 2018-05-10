@@ -11,6 +11,7 @@ let aiVel = 4;
 let ballVel = 5, ballVelInc = 0.75, maxVel = 50;
 let paddleColor, ballColor, backgroundColor;
 let aiWins = 0, plrWins = 0;
+let rainbow = false;
 
 class RectObj
 {
@@ -162,6 +163,8 @@ function keyPressed()
 		upPressed = true;
 	if (keyCode == 83)
 		downPressed = true;
+	if (keyCode == 86)
+		rainbow = !rainbow;
 }
 
 function keyReleased()
