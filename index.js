@@ -63,7 +63,7 @@ function setup()
 	ai = new RectObj(width - 50, height / 2, paddleWidth, paddleHeight);
 	ball = new Ball(500, height / 2, ballRadius, ballRadius, ballVel, ballVel);
 
-	createP("<em>Pong 2 by Matthew Lin</em><br /><br />Pong is one of the earliest arcade games. It was developed by Atari in November 1972 and today is well known as one of the earlies games. <br />The original game featured black and white graphics, but Pong 2, features random color graphics");
+	createP("<em>Pong 2 by Matthew Lin</em><br /><br />Pong is one of the earliest arcade games. It was developed by Atari in November 1972 and today is well known as one of the earlies games. <br />The original game featured black and white graphics, but Pong 2, features random color graphics<br />press v to turn on rainbow mode");
 }
 
 function draw()
