@@ -1,5 +1,5 @@
 let player, ai, ball;
-
+let rainbow = false;
 let downPressed, upPressed;
 
 let width = 1000, height = 500;
@@ -7,7 +7,7 @@ let paddleWidth = 40, paddleHeight = 175;
 let ballRadius = 25;
 let aiCorrection = 10;
 let playerVel = 9;
-let aiVel = 4;
+let aiVel = 4.2;
 let ballVel = 5, ballVelInc = 0.75, maxVel = 50;
 let paddleColor, ballColor, backgroundColor;
 let aiWins = 0, plrWins = 0;
@@ -105,12 +105,24 @@ function doCollision()
 	if (ball.graphics.y > player.y - player.height / 2 && ball.graphics.y < player.y + player.height / 2)
 		if (ball.graphics.x > player.x - player.width / 2 && ball.graphics.x - ball.graphics.width / 2 < player.x + player.width / 2)
 		{
+			if (rainbow == true)
+			{
+					backgroundColor = color(random(0, 255), random(0, 255), random(0, 255));
+					ballColor = color(random(0, 255), random(0, 255), random(0, 255));
+					paddleColor = color(random(0, 255), random(0, 255), random(0, 255));
+			}
 			ball.velX = abs(ball.velX) + ballVelInc;
 		}
 	
 	if (ball.graphics.y > ai.y - ai.height / 2 && ball.graphics.y < ai.y + ai.height / 2)
 		if (ball.graphics.x + ball.graphics.width / 2 > ai.x - ai.width / 2 && ball.graphics.x < ai.x + ai.width / 2)
 		{
+			if (rainbow == true)
+			{
+					backgroundColor = color(random(0, 255), random(0, 255), random(0, 255));
+					ballColor = color(random(0, 255), random(0, 255), random(0, 255));
+					paddleColor = color(random(0, 255), random(0, 255), random(0, 255));
+			}
 			ball.velX = -abs(ball.velX) - ballVelInc;
 		}
 
@@ -160,6 +172,8 @@ function keyPressed()
 		upPressed = true;
 	if (keyCode == 83)
 		downPressed = true;
+	if (keyCode == 86)
+		rainbow = !rainbow;
 }
 
 function keyReleased()
