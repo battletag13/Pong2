@@ -1,3 +1,5 @@
+//TODO: Options (rainbow on hit, diff, trail, rainbow ball), Randomness in ball, better colors
+
 let player, ai, ball;
 
 let downPressed, upPressed;
@@ -44,10 +46,7 @@ class Ball
 		this.velY = velY;
 	}
 
-	draw()
-	{
-		this.graphics.draw(true);
-	}
+	draw() { this.graphics.draw(true); }
 }
 
 function setup()
@@ -63,8 +62,6 @@ function setup()
 	player = new RectObj(50, height / 2, paddleWidth, paddleHeight);
 	ai = new RectObj(width - 50, height / 2, paddleWidth, paddleHeight);
 	ball = new Ball(500, height / 2, ballRadius, ballRadius, ballVel, ballVel);
-
-	createP("<em>Pong 2 by Matthew Lin</em><br /><br />Pong is one of the earliest arcade games. It was developed by Atari in November 1972 and today is well known as one of the earlies games. <br />The original game featured black and white graphics, but Pong 2, features random color graphics<br />Press v for rainbow mode");
 }
 
 function draw()
@@ -109,14 +106,14 @@ function doCollision()
 		if (ball.graphics.x > player.x - player.width / 2 && ball.graphics.x - ball.graphics.width / 2 < player.x + player.width / 2)
 		{
 			ball.velX = abs(ball.velX) + ballVelInc;
-			randColor();
+			if (rainbow) { randColor(); };
 		}
 	
 	if (ball.graphics.y > ai.y - ai.height / 2 && ball.graphics.y < ai.y + ai.height / 2)
 		if (ball.graphics.x + ball.graphics.width / 2 > ai.x - ai.width / 2 && ball.graphics.x < ai.x + ai.width / 2)
 		{
 			ball.velX = -abs(ball.velX) - ballVelInc;
-			randColor();
+			if (rainbow) { randColor(); };
 		}
 
 	if (ai.y < ai.height / 2)
@@ -154,10 +151,7 @@ function drawShapes()
 	ball.draw();
 }
 
-function resetGame()
-{
-	ball = new Ball(500, height / 2, ballRadius, ballRadius, ballVel, ballVel);
-}
+function resetGame() { ball = new Ball(500, height / 2, ballRadius, ballRadius, ballVel, ballVel); }
 
 function keyPressed()
 {
@@ -165,8 +159,6 @@ function keyPressed()
 		upPressed = true;
 	if (keyCode == 83)
 		downPressed = true;
-	if (keyCode == 86)
-		rainbow = !rainbow;
 }
 
 function keyReleased()
@@ -177,16 +169,18 @@ function keyReleased()
 		downPressed = false;
 }
 
-function doubleClicked()
-{
-	randColor();
-}
-
 function randColor()
 {
 	backgroundColor = color(random(0, 255), random(0, 255), random(0, 255));
 	ballColor = color(random(0, 255), random(0, 255), random(0, 255));
 	paddleColor = color(random(0, 255), random(0, 255), random(0, 255));
+}
+
+
+//HTML INTERACTION
+function changeColor()
+{
+	randColor();
 }
 
 //DEBUG
