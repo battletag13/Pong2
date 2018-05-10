@@ -109,12 +109,14 @@ function doCollision()
 		if (ball.graphics.x > player.x - player.width / 2 && ball.graphics.x - ball.graphics.width / 2 < player.x + player.width / 2)
 		{
 			ball.velX = abs(ball.velX) + ballVelInc;
+			randColor();
 		}
 	
 	if (ball.graphics.y > ai.y - ai.height / 2 && ball.graphics.y < ai.y + ai.height / 2)
 		if (ball.graphics.x + ball.graphics.width / 2 > ai.x - ai.width / 2 && ball.graphics.x < ai.x + ai.width / 2)
 		{
 			ball.velX = -abs(ball.velX) - ballVelInc;
+			randColor();
 		}
 
 	if (ai.y < ai.height / 2)
@@ -176,6 +178,11 @@ function keyReleased()
 }
 
 function doubleClicked()
+{
+	randColor();
+}
+
+function randColor()
 {
 	backgroundColor = color(random(0, 255), random(0, 255), random(0, 255));
 	ballColor = color(random(0, 255), random(0, 255), random(0, 255));
