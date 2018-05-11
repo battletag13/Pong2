@@ -100,7 +100,6 @@ function doCollision()
 	{
 		ball.velY = -ball.velY;
 		wallHitSound.play();
-		print("wall!");
 	}
 	if (ball.graphics.x < 0)
 	{
@@ -124,7 +123,6 @@ function doCollision()
 				ball.velY += random(-yVarience, yVarience);
 			if (rainbowMode) { randColor(); };
 			plrHitSound.play();
-			print("paddle!");
 		}
 	
 	if (ball.graphics.y > ai.y - ai.height / 2 && ball.graphics.y < ai.y + ai.height / 2)
@@ -203,6 +201,14 @@ function randColor()
 
 //HTML INTERACTION
 let plrSensitivitySlider = document.getElementById('playerSensitivity');
+let volumeSlider = document.getElementById('volumeLevel');
+
+function updateVolume()
+{
+	newVol = parseFloat(volumeSlider.value);
+	plrHitSound.setVolume(newVol);
+	wallHitSound.setVolume(newVol);
+}
 
 function changeColor()
 {
