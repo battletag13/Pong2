@@ -225,6 +225,7 @@ function trailHandler()
 {
 	for (let i = 0; trails[i] !== undefined; ++i)
 	{
+		console.log(run);
 		trails[i] = new TrailParticle(trailSize, trailTime);
 	}
 }
