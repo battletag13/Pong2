@@ -205,7 +205,8 @@ let volumeSlider = document.getElementById('volumeLevel');
 
 function updateVolume()
 {
-	newVol = parseFloat(volumeSlider.value);
+	newVol = parseInt(volumeSlider.value);
+	newVol /= 10;
 	plrHitSound.setVolume(newVol);
 	wallHitSound.setVolume(newVol);
 }
