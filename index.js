@@ -13,7 +13,7 @@ let ballVel = 5, ballVelInc = 0.75, maxVel = 50;
 let paddleColor, ballColor, backgroundColor;
 let aiWins = 0, plrWins = 0;
 let rainbowMode = false;
-let trailSize = 5;
+let trailSize = 10, trailSpeedMultiplier = 4, trailVarience = 2;
 
 class RectObj
 {
@@ -176,16 +176,16 @@ function doTrail()
 {
 	trail1.graphics.x = ball.graphics.x - ball.velX * 2;
 	trail1.graphics.y = ball.graphics.y - ball.velY * 2;
-	trail1.velX = -ball.velX * 3;
-	trail1.velY = -ball.velY * 3;
+	trail1.velX = -ball.velX * trailSpeedMultiplier;
+	trail1.velY = (-ball.velY + random(-trailVarience, trailVarience)) * trailSpeedMultiplier;
 	trail2.graphics.x = ball.graphics.x - ball.velX * 2;
 	trail2.graphics.y = ball.graphics.y - ball.velY * 2;
-	trail2.velX = -ball.velX * 3;
-	trail2.velY = -ball.velY * 3;
+	trail2.velX = -ball.velX * trailSpeedMultiplier;
+	trail2.velY = (-ball.velY + random(-trailVarience, trailVarience)) * trailSpeedMultiplier;
 	trail3.graphics.x = ball.graphics.x - ball.velX * 2;
 	trail3.graphics.y = ball.graphics.y - ball.velY * 2;
-	trail3.velX = -ball.velX * 3;
-	trail3.velY = -ball.velY * 3;
+	trail3.velX = -ball.velX * trailSpeedMultiplier;
+	trail3.velY = (-ball.velY + random(-trailVarience, trailVarience)) * trailSpeedMultiplier;
 }
 
 function drawShapes()
