@@ -60,6 +60,8 @@ function setup()
 	textAlign(CENTER);
 	textSize(30);
 	noStroke();
+	plrHitSound.setVolume(0.1);
+	wallHitSound.setVolume(0.1);
 	paddleColor = color(255, 255, 255);
 	ballColor = color(255, 255, 255);
 	backgroundColor = color(0);
@@ -95,7 +97,10 @@ function doAI()
 function doCollision()
 {
 	if (ball.graphics.y < 0 + ball.graphics.height / 2 || ball.graphics.y > height - ball.graphics.height / 2)
+	{
 		ball.velY = -ball.velY;
+		wallHitSound.play();
+	}
 	if (ball.graphics.x < 0)
 	{
 		aiWins++;
@@ -117,6 +122,7 @@ function doCollision()
 			if (ball.velY < minVarience && ball.velY > -minVarience)
 				ball.velY += random(-yVarience, yVarience);
 			if (rainbowMode) { randColor(); };
+			plrHitSound.play();
 		}
 	
 	if (ball.graphics.y > ai.y - ai.height / 2 && ball.graphics.y < ai.y + ai.height / 2)
@@ -129,6 +135,7 @@ function doCollision()
 			if (ball.velY < minVarience && ball.velY > -minVarience)
 				ball.velY += random(-yVarience, yVarience);
 			if (rainbowMode) { randColor(); };
+			plrHitSound.play();
 		}
 
 	if (ai.y < ai.height / 2)
