@@ -1,4 +1,4 @@
-//TODO: Options (rainbow on hit, diff, trail, rainbow ball), Randomness in ball, better colors
+//TODO: Options (rainbow on hit, diff, trail, rainbow ball)
 
 let player, ai, ball;
 
