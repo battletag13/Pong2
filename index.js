@@ -164,17 +164,17 @@ function resetGame() { ball = new Ball(500, height / 2, ballRadius, ballRadius, 
 
 function keyPressed()
 {
-	if (keyCode == 87)
+	if (keyCode == 87 || keyCode === UP_ARROW)
 		upPressed = true;
-	if (keyCode == 83)
+	if (keyCode == 83 || keyCode === DOWN_ARROW)
 		downPressed = true;
 }
 
 function keyReleased()
 {
-	if (keyCode == 87)
+	if (keyCode == 87 || keyCode === UP_ARROW)
 		upPressed = false;
-	if (keyCode == 83)
+	if (keyCode == 83 || keyCode === DOWN_ARROW)
 		downPressed = false;
 }
 
