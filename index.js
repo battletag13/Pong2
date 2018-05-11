@@ -1,5 +1,3 @@
-//TODO: Options (rainbow on hit, diff, trail, rainbow ball)
-
 let player, ai, ball;
 
 let downPressed, upPressed;
