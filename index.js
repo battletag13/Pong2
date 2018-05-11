@@ -100,6 +100,7 @@ function doCollision()
 	{
 		ball.velY = -ball.velY;
 		wallHitSound.play();
+		print("wall!");
 	}
 	if (ball.graphics.x < 0)
 	{
@@ -123,6 +124,7 @@ function doCollision()
 				ball.velY += random(-yVarience, yVarience);
 			if (rainbowMode) { randColor(); };
 			plrHitSound.play();
+			print("paddle!");
 		}
 	
 	if (ball.graphics.y > ai.y - ai.height / 2 && ball.graphics.y < ai.y + ai.height / 2)
