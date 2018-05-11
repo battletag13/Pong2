@@ -2,7 +2,7 @@ let player, ai, ball;
 
 let downPressed, upPressed;
 
-let width = 1000, height = 500;
+let width = 1000, height = 400;
 let paddleWidth = 40, paddleHeight = 175;
 let ballRadius = 25, yVarience = 4, minVarience = 2;
 let aiCorrection = 5;
