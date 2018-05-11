@@ -15,6 +15,15 @@ let aiWins = 0, plrWins = 0;
 let rainbowMode = false;
 let trailSize = 10, trailSpeedMultiplier = 8, trailVarience = 4;
 
+class tse
+{
+	constructor()
+	{
+		setTimeout(function() {}, 3000);	
+		print("hello");
+	}
+}
+
 class RectObj
 {
 	constructor(x, y, width, height)
@@ -73,8 +82,10 @@ function setup()
 	trail1 = new Ball(0, 0, trailSize, trailSize, 0, 0);
 	trail2 = new Ball(0, 0, trailSize, trailSize, 0, 0);
 	trail3 = new Ball(0, 0, trailSize, trailSize, 0, 0);
+	a = new tse();
 }
 
+let a;
 function draw()
 {
 	background(backgroundColor);
