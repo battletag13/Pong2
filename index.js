@@ -20,7 +20,7 @@ class tse
 	constructor()
 	{
 		setTimeout(function() {}, 3000);	
-		print("hello");
+		aiWins++;
 	}
 }
 
