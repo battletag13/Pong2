@@ -5,7 +5,7 @@ let downPressed, upPressed;
 let width = 1000, height = 500;
 let paddleWidth = 40, paddleHeight = 175;
 let ballRadius = 25, yVarience = 4, minVarience = 2;
-let aiCorrection = 5;
+let aiCorrection = 3;
 let playerVel = 8;
 let aiVel = 7;
 let ballVel = 5, ballVelInc = 0.75, maxVel = 50;
@@ -87,9 +87,9 @@ function doAI()
 {
 	if (ball.graphics.x > width / 3 && ball.velX > 0)
 	{
-		if (ai.y > ball.graphics.y + aiVel + (aiCorrection * (aiVel / 2)))
+		if (ai.y > ball.graphics.y + aiVel / 2 + aiCorrection)
 			ai.y -= aiVel;
-		else if (ai.y < ball.graphics.y - aiVel - (aiCorrection * (aiVel / 2)))
+		else if (ai.y < ball.graphics.y - aiVel / 2 - aiCorrection)
 			ai.y += aiVel;
 	}
 }
