@@ -223,10 +223,11 @@ function randColor()
 
 function trailHandler()
 {
-	for (let i = 0; trails[i] !== undefined; ++i)
+	for (let i = 0; trails[i] === undefined; )
 	{
-		console.log(run);
+		console.log(trails);
 		trails[i] = new TrailParticle(trailSize, trailTime);
+		break;
 	}
 }
 
