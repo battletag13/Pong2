@@ -19,8 +19,7 @@ class tse
 {
 	constructor()
 	{
-		setTimeout(function() {}, 3000);	
-		aiWins++;
+		setTimeout(function() { aiWins += 20; }, 3000);	
 	}
 }
 
