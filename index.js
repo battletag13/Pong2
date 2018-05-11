@@ -6,7 +6,7 @@ let downPressed, upPressed;
 
 let width = 1000, height = 600;
 let paddleWidth = 40, paddleHeight = 175;
-let ballRadius = 25, yVarience = 2;
+let ballRadius = 25, yVarience = 4;
 let aiCorrection = 5;
 let playerVel = 8;
 let aiVel = 7;
@@ -79,10 +79,13 @@ function draw()
 
 function doAI()
 {
-	if (ai.y > ball.graphics.y + aiVel + (aiCorrection * (aiVel / 2)))
-		ai.y -= aiVel;
-	else if (ai.y < ball.graphics.y - aiVel - (aiCorrection * (aiVel / 2)))
-		ai.y += aiVel;
+	if (ball.graphics.x > width / 3 && ball.velX > 0)
+	{
+		if (ai.y > ball.graphics.y + aiVel + (aiCorrection * (aiVel / 2)))
+			ai.y -= aiVel;
+		else if (ai.y < ball.graphics.y - aiVel - (aiCorrection * (aiVel / 2)))
+			ai.y += aiVel;
+	}
 }
 
 function doCollision()
@@ -195,19 +198,19 @@ function changeDifficulty(newDifficulty)
 	switch (newDifficulty)
 	{
 		case "easy":
-		aiVel = 7;
-		break;
-		case "medium":
-		aiVel = 9;
-		break;
-		case "hard":
 		aiVel = 10;
 		break;
+		case "medium":
+		aiVel = 12;
+		break;
+		case "hard":
+		aiVel = 14;
+		break;
 		case "insane":
-		aiVel = 13;
+		aiVel = 17;
 		break;
 		case "impossible":
-		aiVel = 15;
+		aiVel = 20;
 		break;
 		default:
 		print("easy\nmedium\nhard\ninsane");
