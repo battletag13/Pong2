@@ -4,16 +4,16 @@ let player, ai, ball;
 
 let downPressed, upPressed;
 
-let width = 1000, height = 500;
+let width = 1000, height = 600;
 let paddleWidth = 40, paddleHeight = 175;
-let ballRadius = 25;
-let aiCorrection = 10;
-let playerVel = 9;
-let aiVel = 4;
+let ballRadius = 25, yVarience = 2;
+let aiCorrection = 5;
+let playerVel = 8;
+let aiVel = 7;
 let ballVel = 5, ballVelInc = 0.75, maxVel = 50;
 let paddleColor, ballColor, backgroundColor;
 let aiWins = 0, plrWins = 0;
-let rainbow = false;
+let rainbowMode = false;
 
 class RectObj
 {
@@ -79,9 +79,9 @@ function draw()
 
 function doAI()
 {
-	if (ai.y > ball.graphics.y + aiVel + aiCorrection)
+	if (ai.y > ball.graphics.y + aiVel + (aiCorrection * (aiVel / 2)))
 		ai.y -= aiVel;
-	else if (ai.y < ball.graphics.y - aiVel - aiCorrection)
+	else if (ai.y < ball.graphics.y - aiVel - (aiCorrection * (aiVel / 2)))
 		ai.y += aiVel;
 }
 
@@ -91,13 +91,11 @@ function doCollision()
 		ball.velY = -ball.velY;
 	if (ball.graphics.x < 0)
 	{
-		print("Ai Victory!!!" + ball.velX);
 		aiWins++;
 		resetGame();
 	}
 	if (ball.graphics.x > width)
 	{
-		print("Human Victory!!!\n" + ball.velX);
 		plrWins++;
 		resetGame();
 	}
@@ -106,14 +104,16 @@ function doCollision()
 		if (ball.graphics.x > player.x - player.width / 2 && ball.graphics.x - ball.graphics.width / 2 < player.x + player.width / 2)
 		{
 			ball.velX = abs(ball.velX) + ballVelInc;
-			if (rainbow) { randColor(); };
+			ball.velY += random(-yVarience, yVarience);
+			if (rainbowMode) { randColor(); };
 		}
 	
 	if (ball.graphics.y > ai.y - ai.height / 2 && ball.graphics.y < ai.y + ai.height / 2)
 		if (ball.graphics.x + ball.graphics.width / 2 > ai.x - ai.width / 2 && ball.graphics.x < ai.x + ai.width / 2)
 		{
 			ball.velX = -abs(ball.velX) - ballVelInc;
-			if (rainbow) { randColor(); };
+			ball.velY += random(-yVarience, yVarience);
+			if (rainbowMode) { randColor(); };
 		}
 
 	if (ai.y < ai.height / 2)
@@ -139,7 +139,7 @@ function applyForces()
 	ball.graphics.y += ball.velY;
 
 	if (downPressed)
-		player.y += playerVel;
+		player.y = player.y + playerVel;
 	if (upPressed)
 		player.y -= playerVel;
 }
@@ -178,11 +178,47 @@ function randColor()
 
 
 //HTML INTERACTION
+let plrSensitivitySlider = document.getElementById('playerSensitivity');
+
 function changeColor()
 {
 	randColor();
 }
 
+function rainbowToggle()
+{
+	rainbowMode = !rainbowMode;
+}
+
+function changeDifficulty(newDifficulty)
+{
+	switch (newDifficulty)
+	{
+		case "easy":
+		aiVel = 7;
+		break;
+		case "medium":
+		aiVel = 9;
+		break;
+		case "hard":
+		aiVel = 10;
+		break;
+		case "insane":
+		aiVel = 13;
+		break;
+		case "impossible":
+		aiVel = 15;
+		break;
+		default:
+		print("easy\nmedium\nhard\ninsane");
+		break;
+	}
+}
+
+function updatePlayerSensitivity()
+{
+	playerVel = parseInt(plrSensitivitySlider.value)
+}
 //DEBUG
 function SETVEL(newVel)
 {
