@@ -13,7 +13,7 @@ let ballVel = 5, ballVelInc = 0.75, maxVel = 50;
 let paddleColor, ballColor, backgroundColor;
 let aiWins = 0, plrWins = 0;
 let rainbowMode = false;
-let trailSize = 10, trailSpeedMultiplier = 4, trailVarience = 2;
+let trailSize = 20, trailSpeedMultiplier = 4, trailVarience = 2;
 
 class RectObj
 {
