@@ -4,7 +4,7 @@ let downPressed, upPressed;
 
 let width = 1000, height = 600;
 let paddleWidth = 40, paddleHeight = 175;
-let ballRadius = 25, yVarience = 4;
+let ballRadius = 25, yVarience = 4, minVarience = 2;
 let aiCorrection = 5;
 let playerVel = 8;
 let aiVel = 7;
@@ -106,6 +106,10 @@ function doCollision()
 		{
 			ball.velX = abs(ball.velX) + ballVelInc;
 			ball.velY += random(-yVarience, yVarience);
+			if (ball.velY < minVarience && ball.velY > -minVarience)
+				ball.velY += random(-yVarience, yVarience);
+			if (ball.velY < minVarience && ball.velY > -minVarience)
+				ball.velY += random(-yVarience, yVarience);
 			if (rainbowMode) { randColor(); };
 		}
 	
@@ -114,6 +118,10 @@ function doCollision()
 		{
 			ball.velX = -abs(ball.velX) - ballVelInc;
 			ball.velY += random(-yVarience, yVarience);
+			if (ball.velY < minVarience && ball.velY > -minVarience)
+				ball.velY += random(-yVarience, yVarience);
+			if (ball.velY < minVarience && ball.velY > -minVarience)
+				ball.velY += random(-yVarience, yVarience);
 			if (rainbowMode) { randColor(); };
 		}
 
