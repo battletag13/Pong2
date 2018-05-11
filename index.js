@@ -47,6 +47,12 @@ class Ball
 	draw() { this.graphics.draw(true); }
 }
 
+function preload() {
+	soundFormats('wav', 'mp3');
+	plrHitSound = loadSound('playerBounce.wav');
+	wallHitSound = loadSound('wallBounce.wav');
+  }
+
 function setup()
 {
 	createCanvas(width, height);
