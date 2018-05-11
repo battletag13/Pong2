@@ -1,6 +1,6 @@
 let player, ai, ball;
 
-let trails = [], trailSize = 3, trailTime = 0.5, trailInterval = 0.1;
+let trails = [], trailSize = 3, trailTime = 2, trailInterval = 0.1;
 
 let downPressed, upPressed;
 
@@ -284,7 +284,7 @@ function updatePlayerSensitivity()
 //DEBUG
 function SETVEL(newVel)
 {
-	playerVel = newVel;
+	console.log(trails);
 }
 
 function SETDIFF(newDiff)
