@@ -1,7 +1,5 @@
 let player, ai, ball;
 
-let trails = [], trailSize = 3, trailTime = 2, trailInterval = 0.1;
-
 let downPressed, upPressed;
 
 let width = 1000, height = 500;
@@ -44,19 +42,6 @@ class Ball
 		this.graphics = new RectObj(x, y, width, height);
 		this.velX = velX;
 		this.velY = velY;
-	}
-
-	draw() { this.graphics.draw(true); }
-}
-
-class TrailParticle
-{
-	constructor(size, time)
-	{
-		this.size = size;
-		this.time = time;
-		this.graphics = new RectObj(ball.graphics.x, ball.graphics.y, size, size);
-		setTimeout(function() { this = undefined; }, time * 1000);
 	}
 
 	draw() { this.graphics.draw(true); }
@@ -186,14 +171,6 @@ function drawShapes()
 	player.draw();
 	ai.draw();
 	ball.draw();
-
-	for (let i = 0; i < trails.length; ++i)
-	{
-		if (trails[i] !== undefined)
-		{
-			trails[i].draw();
-		}
-	}
 }
 
 function resetGame() { ball = new Ball(500, height / 2, ballRadius, ballRadius, ballVel, ballVel); }
@@ -221,17 +198,7 @@ function randColor()
 	paddleColor = color(random(0, 255), random(0, 255), random(0, 255));
 }
 
-function trailHandler()
-{
-	for (let i = 0; trails[i] === undefined; )
-	{
-		console.log(trails);
-		trails[i] = new TrailParticle(trailSize, trailTime);
-		break;
-	}
-}
 
-setInterval(trailHandler, trailInterval * 1000);
 //HTML INTERACTION
 let plrSensitivitySlider = document.getElementById('playerSensitivity');
 let volumeSlider = document.getElementById('volumeLevel');
@@ -286,7 +253,7 @@ function updatePlayerSensitivity()
 //DEBUG
 function SETVEL(newVel)
 {
-	console.log(trails);
+	playerVel = newVel;
 }
 
 function SETDIFF(newDiff)
